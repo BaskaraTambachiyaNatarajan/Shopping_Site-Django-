@@ -1,0 +1,81 @@
+{% load static%}
+{% static "products" as baseURL%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Site</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'Login.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    
+    <div class="bg-img"></div>
+    <div class="alert text-center" id="message" style="display: none;margin-left:25%;margin-right:25%">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    <div class="row right">
+        <div>  
+          <a type="button" href="/" class="btn btn-link" style="color: black;"><h2><b>Login</b></h2></a>
+          </div>
+      </div>
+    <h1 class="top-left" style = "font-size: 50px"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;&nbsp;Shopping Site</h1>
+<div class="jumbotron" style="left: 25%;">
+    <form action="home" method="post" class="adjust" id="form" onsubmit="myFunction()" autocomplete="off">
+
+        {% csrf_token %}
+        <h4 class="text-center">  
+            Seller Login
+        </h4>
+        <div class="form-group">
+          <label for="uname"><b>Username:</b></label>
+          <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+          <label for="pwd"><b>Password:</b></label>
+          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>    
+        <div class="text-center">  
+            <button type="submit" class="btn btn-warning">Submit</button>
+        </div><br/>
+        <div class="row">
+        <div>  
+            <button type="button" class="btn btn-link" style="color: black;"><b>Forgot Password?</b></button>
+        </div>
+        <div class="ml-auto">  
+            <a type="button" href="/seller/register" class="btn btn-link" style="color: black;"><b>Not an user? Signup</b></a>
+        </div>
+        </div>
+      </form>
+</div>
+
+</body>
+<script>
+    var data = ("{{message|escapejs}}");
+    var type=("{{type|escapejs}}");
+    var dataNode = document.getElementById('message');
+    dataNode.innerHTML+="{{message|escapejs}}";
+    dataNode.classList.add(type);
+    if(data.length>0){
+        dataNode.style.display = "block";
+    }
+
+    var form = document.getElementById('form');
+    function myFunction() {
+        form.classList.add("was-validated");
+      }
+</script>
+
+</html>

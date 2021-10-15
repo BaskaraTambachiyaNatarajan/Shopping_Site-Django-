@@ -1,0 +1,126 @@
+{% extends 'sellerheader.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  {% block content %}
+<body style="background-color: #e9ecef;">
+    <div class="jumbotron">
+    <form action="/seller/add" method="post" class="adjust" id="form" onsubmit="myFunction()" enctype="multipart/form-data" autocomplete="off">
+
+        {% csrf_token %}
+        <div class="form-group">
+          <div class="row">
+          <div class="col-sm-2 text-left"><label for="name"><b>Product Name:</b></label></div>
+          <div class="col-sm-8"><input type="text" class="form-control" id="uname" placeholder="Enter Product Name" name="pname" required></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+          <div class="col-sm-2 text-left"><label for="price"><b>Price:</b></label></div>
+          <div class="col-sm-8"><input type="number" class="form-control" id="price" placeholder="Enter Price" name="price" required step="0.0000001"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+          <div class="col-sm-2 text-left"><label for="price"><b>Images:</b></label></div>
+          <div class="col-sm-8"><input type="file" multiple class="form-control" aria-label="file example" id="images" name="images" required></div>
+          </div>
+        </div>
+        <div class="form-group"  id="description" att="1">
+          <div class="text-left"><label for="price"><b>Description:</b></label></div>
+          <div class="row" id="1">
+          <div class="col-sm-4"><input type="text" class="form-control" id="key1" placeholder="Enter Key" name="key1"></div>
+          <div class="col-sm-6"><input type="text" class="form-control" id="value1" placeholder="Enter Details" name="value1"></div>
+          <div class="col-sm-2"><i class="fa fa-plus-circle fa-2x" type="button" aria-hidden="true" style="color: green;" onclick="newdiv()"></i><i class="fa fa-minus-circle fa-2x ml-3" type="button" aria-hidden="true" style="color: red;" onclick="removediv(1)"></i></div>
+          </div>
+        </div>
+        <div class="form-group" style="display: none;">
+          <div class="row">
+          <div class="col-sm-2 text-left"><label for="price"><b>Images:</b></label></div>
+          <div class="col-sm-8"><input type="text" class="form-control" aria-label="file example" id="totalcount" name="totalcount"></div>
+          </div>
+        </div>
+        <div class="text-center">  
+            <button type="submit" class="btn btn-warning">Submit</button>
+        </div>
+      </form>
+    </div>
+</body>
+<script>
+  var cars = [1];
+function newdiv() {
+  count=1;
+  while(cars.includes(count)){
+    count=count+1
+  }
+  var row = document.createElement("div");
+  row.className="row";
+  var element = document.getElementById("description");
+  row.setAttribute("id",count);
+  row.setAttribute("style","padding-top:3%");
+  element.appendChild(row);
+
+  //inside div create key input
+  var keyinput = document.createElement("div");
+  keyinput.className="col-sm-4";
+  row.appendChild(keyinput);
+  var inputtokey = document.createElement("input");
+  inputtokey.className="form-control";
+  inputtokey.setAttribute("placeholder","Enter Key");
+  inputtokey.setAttribute("id","key"+(count));
+  inputtokey.setAttribute("name","key"+(count));
+  keyinput.appendChild(inputtokey);
+  
+  //inside div create value input
+  var valueinput = document.createElement("div");
+  valueinput.className="col-sm-6";
+  row.appendChild(valueinput);
+  var inputtovalue = document.createElement("input");
+  inputtovalue.className="form-control";
+  inputtovalue.setAttribute("placeholder","Enter Value");
+  inputtovalue.setAttribute("id","value"+(count));
+  inputtovalue.setAttribute("name","value"+(count));
+  valueinput.appendChild(inputtovalue);
+    
+  //inside div create i buttons
+  var ibutton = document.createElement("div");
+  ibutton.className="col-sm-2";
+  row.appendChild(ibutton);
+  //addbutton
+  var addbutton = document.createElement("i");
+  addbutton.className="fa fa-plus-circle fa-2x";
+  addbutton.setAttribute("type","button");
+  addbutton.setAttribute("aria-hidden","true");
+  addbutton.setAttribute("style","color: green;");
+  addbutton.setAttribute("onclick","newdiv()");
+  ibutton.appendChild(addbutton);
+  //removebutton
+  var removebutton = document.createElement("i");
+  removebutton.className="fa fa-minus-circle fa-2x ml-3";
+  removebutton.setAttribute("type","button");
+  removebutton.setAttribute("aria-hidden","true");
+  removebutton.setAttribute("style","color: red;");
+  removebutton.setAttribute("onclick","removediv("+(count)+")");
+  ibutton.appendChild(removebutton);
+  cars.push(count);
+  }
+function removediv(count) {
+  console.log(count)
+  var myobj = document.getElementById(count);
+  myobj.remove();
+  console.log(cars);
+  index=cars.indexOf(count);
+  var removed = cars.splice(index,1);
+  console.log(cars);
+}
+
+function myFunction(){
+  var totalcount=document.getElementById("totalcount");
+  var element = document.getElementById("description");
+  count=cars;
+  totalcount.setAttribute("value",count);
+}
+</script>
+{% endblock %}
+</html>

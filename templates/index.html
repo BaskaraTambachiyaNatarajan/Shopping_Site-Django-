@@ -1,0 +1,107 @@
+{% extends 'header.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  {% block content %}
+
+<body>
+  <div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+  
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'cup.jfif' %}" alt="Los Angeles" width="100%">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'bag.jfif' %}" alt="Chicago" width="100%">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'spotlight.jpg' %}" alt="New York" width="100%">
+      </div>
+    </div>
+  
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>  
+  <br/> 
+
+  <div class="card-deck">
+    <div class="row"></div>
+    {% for product in products|slice:":3" %}
+    <div class="card col-3 ml-3 mx-auto">
+      <h2 class="card-title">{{product.name}}</h2>
+      <div class="card-body" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <img class="card-img " src="{{ MEDIA_URL }}/{{product.image}}" alt="Card image">
+      </div>
+      <a role="button" class="stretched-link" data-toggle="modal" data-target="#exampleModal"></a>
+    </div>
+    {% endfor %}
+  </div>
+    <div class="row"></div>
+    {% for product in products|slice:"3:6" %}
+    <div class="card col-3 ml-3 mx-auto">
+      <h2 class="card-title">{{product.name}}</h2>
+      <div class="card-body" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <img class="card-img " src="{{ MEDIA_URL }}/{{product.image}}" alt="Card image">
+      </div>
+      <a role="button" class="stretched-link" data-toggle="modal" data-target="#exampleModal"></a>
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+</div>
+
+
+
+<!--  MODAL     -->
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--   END   -->
+
+
+
+
+</body>
+<script>
+    $.ajax('/update_session', function(data) {
+        alert(data);
+    });
+</script>
+{% endblock %}
+
+</html>
+      

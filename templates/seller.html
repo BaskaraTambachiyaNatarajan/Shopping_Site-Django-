@@ -1,0 +1,38 @@
+{% extends 'sellerheader.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  {% block content %}
+<body>
+  <div class="row" style="padding-top: 3%;padding-bottom:1%;">
+        <a href="/seller/add" type="button" class="btn btn-dark btn-lg ml-auto mr-5">Add a Product</a>
+  </div>
+  {% if products %}
+    <h1>{{ products.sno1 }}</h1>
+  <table class="table table-hover table-bordered" style="margin-left: auto;margin-right: auto;">
+    <thead style="background-color: #0C4B33">
+      <tr>
+        <th style="width:10%;">SNO</th>
+        <th style="width:90%">Product name</th>
+      </tr>
+    </thead>
+    <tbody style="background-color:#e7fcf2">
+      {%for i,j in products.items%}
+      <tr>
+        <td>{{i}}</td>
+        <td>{{j}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="center_container">
+    <p>Please Add Products</p>
+      <img src="{% static 'empty' %}" alt="Empty">
+  </div>
+  {% endif %}
+</body>
+
+{% endblock %}
+</html>

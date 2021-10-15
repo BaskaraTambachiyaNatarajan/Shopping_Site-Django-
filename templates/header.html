@@ -1,0 +1,102 @@
+{% load static %}
+{% static "products" as baseURL%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Travello template project">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'mystyles.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    
+    
+
+    <div class="row">
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+          <div class="col-sm-3">
+          <a class="navbar-brand" href="#">Shopping Site &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hi {{request.session.uname}},</a>
+          </div>
+          <div class="col-sm-6">
+          <div class="row" style="display: block;">
+          <ul class="navbar-nav">
+            <div class="col-sm-4">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                  <i class="fa fa-mobile"></i>&emsp;Electronics
+              </a>
+              <div class="dropdown-menu w-100">
+                <a class="dropdown-item" href="#">Mobiles</a>
+                <a class="dropdown-item" href="#">Laptops</a>
+                <a class="dropdown-item" href="#">Accessories</a>
+              </div>
+            </li>
+            </div>
+            <div class="col-sm-4">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                  <i class="fa fa-television"></i>&emsp;Appliances
+                </a>
+                <div class="dropdown-menu w-100">
+                  <a class="dropdown-item" href="#">TV</a>
+                  <a class="dropdown-item" href="#">Refrigearator</a>
+                  <a class="dropdown-item" href="#">Air Conditioner</a>
+                </div>
+              </li>
+              </div>
+              <div class="col-sm-4">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      <i class="fa fa-child" aria-hidden="true"></i>&emsp;Clothing
+                    </a>
+                    <div class="dropdown-menu w-100">
+                      <a class="dropdown-item" href="#">Men's</a>
+                      <a class="dropdown-item" href="#">Women's</a>
+                      <a class="dropdown-item" href="#">Kids</a>
+                    </div>
+                  </li>
+              </div>
+              
+          </ul>
+          </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="row">
+              <div class="col-sm-4"> 
+            <form class="d-flex" action="/action_page.php">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            </div>
+            <div class="col-sm-4">
+            <i class="fa fa-shopping-cart fa-2x about" style="color: white;"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="col-sm-4">
+            <div class="dropdown about">
+              <i class="fa fa-user-circle-o fa-2x" style="color: white;" data-toggle="dropdown"></i>
+              <ul class = "dropdown-menu dropdown-menu-center">
+                <a class="dropdown-item" href="/myaccount">My Account</a>
+                <a class="dropdown-item" href="#">Wishlist</a>
+                <a class="dropdown-item" href="/logout">Signout</a>
+              </ul>
+            </div>
+          </div>
+            </div>
+          </div>
+      </nav>
+  </div>
+
+</head>
+<body>
+
+{% block content%}
+
+{% endblock %}
+
+</body>
+</html>
