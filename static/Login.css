@@ -1,0 +1,70 @@
+.jumbotron{
+    width: 50%;
+	height: 50%;
+	background-color: transparent !important;
+	position: absolute;
+	top:10%;
+	left: 5%;
+	margin: auto;
+}
+
+.adjust{
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+body, html {
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    text-shadow: 2px 2px 5px black;
+  }
+
+  .top-left {
+    position: absolute;
+    top: 2%;
+    left: 35%;
+  }
+
+  .right {
+    position: absolute;
+    top: 1%;
+    right: 5%;
+  }
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .bg-image {
+    /* The image used */
+    background-image: url("bg2.jpg");
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .bg-img {
+    /* The image used */
+    background-image: url("bg3.png");
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  
